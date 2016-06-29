@@ -9,14 +9,14 @@ import android.widget.TextView;
 
 import com.qslll.expandingpager.model.Travel;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class InfoActivity extends AppCompatActivity {
 
     private static final String EXTRA_TRAVEL = "EXTRA_TRAVEL";
-    @Bind(R.id.image) ImageView image;
-    @Bind(R.id.title) TextView title;
+    @BindView(R.id.image) ImageView image;
+    @BindView(R.id.title) TextView title;
 
     public static Intent newInstance(Context context, Travel travel) {
         Intent intent = new Intent(context, InfoActivity.class);

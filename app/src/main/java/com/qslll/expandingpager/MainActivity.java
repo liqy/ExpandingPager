@@ -21,12 +21,14 @@ import com.qslll.library.fragments.ExpandingFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements ExpandingFragment.OnExpandingClickListener{
-    @Bind(R.id.viewPager) ViewPager viewPager;
-    @Bind(R.id.back)ViewGroup back;
+public class MainActivity extends AppCompatActivity implements ExpandingFragment.OnExpandingClickListener {
+    @BindView(R.id.viewPager)
+    ViewPager viewPager;
+    @BindView(R.id.back)
+    ViewGroup back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements ExpandingFragment
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 ExpandingFragment expandingFragment = ExpandingPagerFactory.getCurrentFragment(viewPager);
-                if(expandingFragment != null && expandingFragment.isOpenend()){
+                if (expandingFragment != null && expandingFragment.isOpenend()) {
                     expandingFragment.close();
                 }
             }
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements ExpandingFragment
 
     @Override
     public void onBackPressed() {
-        if(!ExpandingPagerFactory.onBackPressed(viewPager)){
+        if (!ExpandingPagerFactory.onBackPressed(viewPager)) {
             super.onBackPressed();
         }
     }
@@ -76,9 +78,9 @@ public class MainActivity extends AppCompatActivity implements ExpandingFragment
         getWindow().setExitTransition(slideTransition);
     }
 
-    private List<Travel> generateTravelList(){
+    private List<Travel> generateTravelList() {
         List<Travel> travels = new ArrayList<>();
-        for(int i=0;i<5;++i){
+        for (int i = 0; i < 5; ++i) {
             travels.add(new Travel("Seychelles", R.drawable.seychelles));
             travels.add(new Travel("Shang Hai", R.drawable.shh));
             travels.add(new Travel("New York", R.drawable.newyork));
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements ExpandingFragment
         }
         return travels;
     }
+
     @SuppressWarnings("unchecked")
     private void startInfoActivity(View view, Travel travel) {
         Activity activity = this;
@@ -102,6 +105,6 @@ public class MainActivity extends AppCompatActivity implements ExpandingFragment
         //v is expandingfragment layout
         View view = v.findViewById(R.id.image);
         Travel travel = generateTravelList().get(viewPager.getCurrentItem());
-        startInfoActivity(view,travel);
+        startInfoActivity(view, travel);
     }
 }
